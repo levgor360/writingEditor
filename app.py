@@ -54,15 +54,27 @@ def ClaudeAI_call(usr_prompt):
 
     st.session_state.messages.append({"role": "user", "content": usr_prompt})
 
-    response = client.messages.create(
-        model="claude-3-sonnet-20240229",
-        messages=st.session_state.messages,
-        temperature=chosen_temperature,
-        max_tokens=chosen_max_tokens,
-    )
-    output = response.content[0].text
+    with st.chat_message("assistant"):
+      message_placeholder = st.empty()
+      full_response= ""
+
+      # Implement streaming functionality
+      with client.messages.stream(
+          model="claude-3-sonnet-20240229",
+          messages=st.session_state.messages,
+          temperature=chosen_temperature,
+          max_tokens=chosen_max_tokens,
+      ) as stream:
+          for chunk in stream:
+              if chunk.type == "content_block_delta":
+                  full_response += chunk.delta.text
+                  message_placeholder.write(full_response + " "
+                  )
+      
+      message_placeholder.write(full_response)
+
     st.session_state.messages.append({"role": "assistant", "content": output})
-    st.chat_message("assistant").write(output)
+
 
 if prompt := st.chat_input():
     if not claude_api_key:
