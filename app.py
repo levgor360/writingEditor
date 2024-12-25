@@ -56,7 +56,7 @@ def ClaudeAI_call(usr_prompt):
 
     with st.chat_message("assistant"):
       message_placeholder = st.empty()
-      full_response= ""
+      output = ""
 
       # Implement streaming functionality
       with client.messages.stream(
@@ -67,11 +67,11 @@ def ClaudeAI_call(usr_prompt):
       ) as stream:
           for chunk in stream:
               if chunk.type == "content_block_delta":
-                  full_response += chunk.delta.text
-                  message_placeholder.write(full_response + " "
+                  output += chunk.delta.text
+                  message_placeholder.write(output + " "
                   )
       
-      message_placeholder.write(full_response)
+      message_placeholder.write(output)
 
     st.session_state.messages.append({"role": "assistant", "content": output})
 
