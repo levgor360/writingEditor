@@ -52,7 +52,7 @@ def ClaudeAI_call(usr_prompt):
     
     st.chat_message("user").write(usr_prompt) # Display the user's message in the Streamlit chat interface.
 
-    st.session_state.messges.append({"role": "user", "content": usr_prompt})
+    st.session_state.messages.append({"role": "user", "content": usr_prompt})
 
     response = client.messages.create(
         model="claude-3-sonnet-20240229",
@@ -62,7 +62,7 @@ def ClaudeAI_call(usr_prompt):
     )
     output = response.content[0].text
     st.session_state.messages.append({"role": "assistant", "content": output})
-    st.chat_messages("assistant").write(output)
+    st.chat_message("assistant").write(output)
 
 if prompt := st.chat_input():
     if not claude_api_key:
