@@ -29,9 +29,6 @@ with open(yaml_path, 'r') as file:
 ## Testing:
 # st.write(prompts['system_prompt'])
 
-def reset_editor_mode():
-    st.session_state.editor_mode = "None"
-
 # Sidebar setup
 with st.sidebar:
     # Title displayed on the side bar
@@ -43,8 +40,6 @@ with st.sidebar:
         "Editor Mode",
         ["None", "Sentence Polisher", "Synonym Finder"],
         index=0, # Default to "None"
-        key="editor_mode",
-        on_change=reset_editor_mode
     )
     
     # Convert radio selection to boolean flags
@@ -121,6 +116,7 @@ def editor_chain(usr_prompt):
         st.session_state.messages.append({"role": "user", "content": str((usr_prompt))})
 
     ClaudeAI_call(usr_prompt)
+    st.session_state.editor_mode = "None"
 
 if prompt := st.chat_input():
     if not claude_api_key:
