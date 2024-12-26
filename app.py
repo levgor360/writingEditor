@@ -39,7 +39,7 @@ with st.sidebar:
 client = Anthropic(api_key=claude_api_key)
 
 chosen_temperature = st.sidebar.slider('temperature', min_value=0.0, max_value=1.0, value=0.7, step=0.01)
-chosen_max_tokens = st.sidebar.slider('max_tokens', min_value=32, max_value=150000, value=32000, step=1000)
+chosen_max_tokens = st.sidebar.slider('max_tokens', min_value=32, max_value=4096, value=4096, step=100)
 
 # main window title setup
 st.subheader('Writing editor')
