@@ -27,7 +27,7 @@ with open(yaml_path, 'r') as file:
     prompts = yaml.safe_load(file)
 
 ## Testing:
-st.write(prompts['system_prompt'])
+# st.write(prompts['system_prompt'])
 
 # sidebar setup
 with st.sidebar:
@@ -46,7 +46,7 @@ st.subheader('Writing editor')
 
 if "messages" not in st.session_state.keys():
     st.session_state["messages"] = [
-        {"role": "system", "content": "dafdsafa"},
+        {"role": "system", "content": prompts['system_prompt']},
         {"role": "assistant", "content": "Decribe the task or problem you would like me to tackle."}
         ]
 
@@ -60,11 +60,9 @@ def clear_chat_history():
     st.session_state["messages"] = [{"role": "assistant", "content": "Decribe the task or problem you would like me to tackle."}]
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
-def ClaudeAI_call(usr_prompt):
-    
+# Define the call
+def ClaudeAI_call(usr_prompt):  
     st.chat_message("user").write(usr_prompt) # Display the user's message in the Streamlit chat interface.
-
-    st.session_state.messages.append({"role": "user", "content": usr_prompt})
 
     with st.chat_message("assistant"):
       message_placeholder = st.empty()
@@ -87,9 +85,16 @@ def ClaudeAI_call(usr_prompt):
 
     st.session_state.messages.append({"role": "assistant", "content": output})
 
+def editor_chain(usr_prompt):
+    if len(st.session_state.messages) == 1: #apply the backend prompt to the users input, but only on their first input
+        sentence_mod_prompt = prompts['sentence_correction'].replace("{user_input}", usr_prompt)
+        st.session_state.messages.append({"role": "user", "content": sentence_mod_prompt})
+    else:
+        st.session_state.messages.append({"role": "user", "content": str((usr_prompt))})    
+        ClaudeAI_call
 
 if prompt := st.chat_input():
     if not claude_api_key:
         st.info("Please add your API key to continue.")
         st.stop()
-    ClaudeAI_call(prompt)
+    editor_chain(prompt)
