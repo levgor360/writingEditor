@@ -4,23 +4,18 @@ system_prompt: |
 sentence_correction : |
   The text below located under the heading 'Excerpt' is a written original piece of work. Please provide three examples of how I can rewrite the excerpt to improve the writing quality and conceptual clarity.
 
-  Each example should represents a different editorial approach or "lens" through which to view the text. For instance, one version might prioritize eloquence of writing, another might focus on a smooth narrative flow of concepts, and a third might emphasize use of analogies where you deem them appropriate. Label each version with a markdown heading that describes its specific focus. Pick the "lenses" according to your own best judgment as to what modification the text demands the most. Other lenses you may choose from:
-    - Improved cadence - this will focus on establishing a rhythm in sentence length and complexity.
+  Each example should represents a different editorial approach or "lens" through which to view the text. The first "lens" must always be sentence structure improvement, which is described below. As an example, the three "lenses" you may decide to choose could have one version prioritizing sentence structure improvement, another might focus on analogy insertion, and a third might emphasize on improving informational hierarchy. Label each version with a markdown heading that describes its specific focus. Besides the first "lens", which should always be "sentence structure improvement", pick the "lenses" according to your own best judgment as to what modification the text demands the most. 
+  
+  Lenses you may choose from:
+    - Sentence structure improvement - Change the text under the heading 'Excerpt' only where stylistic needs demand it. Make modifications only on the level of sentences if you believe the sentence is poorly formed. Alternatively, offer alternative choice for specific words within a sentence if you think the overall sentence structure is of quality. Do not add additional sentences or skip sentences already present. Try to retain the order in which the ideas are presented. Diligently follow the semantic train of thought within the text under the heading 'Excerpt'. Retain the meaning of each sentence to be as close as possible to the original text under the heading 'Excerpt'. Do not omit any concepts, detail or sentence from the original text located under the heading 'Excerpt' when rewriting that section. In offering your suggestions, seek guidance for tone, style and cadence from the sample pasted under the heading 'Sample'. Try to emulate the overall reading experience that you see in the content under the heading 'Sample'. Do not attempt to edit the content under the heading 'Sample'. Perform your edits only on the content under the heading 'Excerpt'. Use the content under heading 'Sample' only for stylistic guidance. 
+    - Improved cadence - this version will focus on establishing a rhythm in sentence length and complexity. You are allowed to merge sentences into one or split them apart if you believe this will improve the cadence of the reading experience.
+    - Analogies insertion - You are welcome to insert original analogies or metaphors to the text you rewrite, but do so sparingly and only where you think its a very good idea. Do this ins rare cases, when the text is describing complex concepts. 
     - Inserted transitions - choose this lens if you believe concepts from paragraph to paragraph or sentence to sentence are too disjointed and make sudden leaps in what is being discussed.
     - Improved informational hierarhcy - this lens focuses on restructuring the concepts within a paragraph to improve logical flow
     - Ambiguity elimination - this lens targets sections of the text which may be lost on the reader without technical knowledge or insight into a specific subfield.
     - Tone - this lens can be applied if you believe the tone of the text diverges radically from the tone in the previous text of the book which is pasted under the heading 'Sample' below. 
 
   IMPORTANT: Provide ONLY the rewritten text. Do not include any explanations, comments, or analysis. Do not preface or follow the rewritten text with any additional text. Simply output the improved version of the text.
-
-  Make only minor modifications to the text to improve legibility, word choice, cadence and the overall reading experience while staying true to that version's particular editorial approach.
-
-  You are welcome to insert original analogies or metaphors to the text you rewrite, but do so sparingly and only where you think its a very good idea. Do this ins rare cases, when the text is describing complex concepts. You are allowed to merge sentences into one or split them apart if you believe this will improve the cadence of the reading experience. 
-
-
-  Try to retain the order in which the ideas are presented. Diligently follow the semantic train of thought within the text under the heading 'Excerpt'. Retain the meaning of each sentence to be as close as possible to the original text under the heading 'Excerpt'. Do not omit any concepts, detail or sentence from the original text located under the heading 'Excerpt' when rewriting that section. 
-
-  In offering your suggestions, seek guidance for tone, style and cadence from the sample pasted under the heading 'Sample'. Try to emulate the overall reading experience that you see in the content under the heading 'Sample'. Do not attempt to edit the content under the heading 'Sample'. Perform your edits only on the content under the heading 'Excerpt'. Use the content under heading 'Sample' only for stylistic guidance.
 
   # Sample: 
   ## Chapter 1: Void
