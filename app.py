@@ -102,7 +102,7 @@ def ClaudeAI_call(usr_prompt):
     st.session_state.messages.append({"role": "assistant", "content": output})
 
 def editor_chain(usr_prompt):
-    if len(st.session_state.messages) == 1 and enable_sentence_correction == True: #apply the backend prompt to the users input, but only on their first input
+    if enable_sentence_correction == True: #apply the backend prompt to the users input, but only on their first input
         sentence_mod_prompt = prompts['sentence_correction'].replace("{user_input}", usr_prompt)
         st.session_state.messages.append({"role": "user", "content": sentence_mod_prompt})
     else:
