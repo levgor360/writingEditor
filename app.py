@@ -46,7 +46,6 @@ st.subheader('Writing editor')
 
 if "messages" not in st.session_state.keys():
     st.session_state["messages"] = [
-        {"role": "system", "content": prompts['system_prompt']},
         {"role": "assistant", "content": "Decribe the task or problem you would like me to tackle."}
         ]
 
@@ -72,6 +71,7 @@ def ClaudeAI_call(usr_prompt):
       with client.messages.stream(
           model="claude-3-sonnet-20240229",
           messages=st.session_state.messages,
+          system=prompts['system_prompt'],
           temperature=chosen_temperature,
           max_tokens=chosen_max_tokens,
       ) as stream:
