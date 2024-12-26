@@ -70,7 +70,7 @@ st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Define the call
 def ClaudeAI_call(usr_prompt):   
-    st.chat_message("user").code(usr_prompt) # Display the user's message in the Streamlit chat interface.
+    st.chat_message("user").write(usr_prompt) # Display the user's message in the Streamlit chat interface.
     try:
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
@@ -98,9 +98,9 @@ def ClaudeAI_call(usr_prompt):
     except Exception as e:
         st.error(f"API Error: {str(e)}")
       
-    message_placeholder.code(output)
+    message_placeholder.code(output, wrap=True)
     st.session_state.messages.append({"role": "assistant", "content": output})
-
+ 
 def editor_chain(usr_prompt):
     if enable_sentence_correction: # Apply the sentence polisher only if checkbox is selected
         sentence_mod_prompt = prompts['sentence_correction'].replace("{user_input}", usr_prompt)
