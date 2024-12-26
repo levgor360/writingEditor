@@ -4,6 +4,8 @@ system_prompt: |
 sentence_correction : |
   The text below located under the heading 'Excerpt' is a written original piece of work. Please provide an example of how I can rewrite the excerpt to improve the writing quality and conceptual clarity.
 
+  IMPORTANT: Provide ONLY the rewritten text. Do not include any explanations, comments, or analysis. Do not preface or follow the rewritten text with any additional text. Simply output the improved version of the text.
+  
   Make only minor modifications to the text to improve legibility, word choice, cadence and the overall reading experience while staying true to that version's particular editorial approach.
 
   You are welcome to insert original analogies or metaphors to the text you rewrite, but do so sparingly and only where you think its a very good idea. Do this ins rare cases, when the text is describing complex concepts. 
