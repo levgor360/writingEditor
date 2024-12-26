@@ -4,6 +4,7 @@ import os
 from anthropic import Anthropic  # Replace OpenAI import
 from openai import OpenAI
 import json
+import yaml
 from phoenix.otel import register
 import requests
 from openinference.instrumentation.openai import OpenAIInstrumentor
@@ -26,7 +27,7 @@ with open(yaml_path, 'r') as file:
     prompts = yaml.safe_load(file)
 
 ## Testing:
-st.chat_message("user").write(prompts['system_prompt'])
+st.write(prompts['system_prompt'])
 
 # sidebar setup
 with st.sidebar:
@@ -89,6 +90,6 @@ def ClaudeAI_call(usr_prompt):
 
 if prompt := st.chat_input():
     if not claude_api_key:
-        st.info("Please add your OpenAI API key to continue.")
+        st.info("Please add your API key to continue.")
         st.stop()
     ClaudeAI_call(prompt)
