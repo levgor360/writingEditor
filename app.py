@@ -98,7 +98,7 @@ def ClaudeAI_call(usr_prompt):
     except Exception as e:
         st.error(f"API Error: {str(e)}")
       
-    message_placeholder.code(output, wrap=True)
+    message_placeholder.markdown(output)
     st.session_state.messages.append({"role": "assistant", "content": output})
  
 def editor_chain(usr_prompt):
