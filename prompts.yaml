@@ -4,7 +4,7 @@ system_prompt: |
 sentence_correction : |
   The text below located under the heading 'Excerpt' is a written original piece of work. Please provide three examples of how I can rewrite the excerpt to improve the writing quality and conceptual clarity.
 
-  Return your output as a markdown code block, in which each example represents a different editorial approach or "lens" through which to view the text. For instance, one version might prioritize technical precision, another might focus on narrative flow, and a third might emphasize accessibility for a general audience. Label each version with a markdown heading that describes its specific focus. Make only minor modifications to the text to improve legibility, word choice, cadence and the overall reading experience while staying true to that version's particular editorial approach.
+  Each example should represents a different editorial approach or "lens" through which to view the text. For instance, one version might prioritize eloquence of writing, another might focus on a smooth narrative flow of concepts, and a third might emphasize use of analogies where you deem them appropriate. Pick the "lenses" according to your own best judgment as to what modification the text demands the most Label each version with a markdown heading that describes its specific focus.
 
   IMPORTANT: Provide ONLY the rewritten text. Do not include any explanations, comments, or analysis. Do not preface or follow the rewritten text with any additional text. Simply output the improved version of the text.
 
