@@ -89,6 +89,7 @@ synonym_id : |
   3. The suggested alternative should be about the same length as the length of the bracketed text. 
   4. If the bracketed text is a single word, then offer a one word alternative which would be more fitting in the context of the passage, improve the clarity of the concept being delivered in the sentence, and/or improve the stylistic elements of the sentence.
   5. If the bracketed text is a sentence, then aim to offer an alternative that that maintain the same core meaning but expresses it more elegantly, conveying the same concept while improving clarity, logical continuity and the overall reading experience. The alternative content you suggest can be slightly longer than the original bracketed sentence, but should not extend beyond one additional sentence.
+  6. IMPORTANT: Provide ONLY the alternative text options. Do not include any explanations, comments, or analysis. Do not preface or follow the variations with any additional text. Simply output each variation on a new line.
 
   # Excerpt:
   {user_input}
