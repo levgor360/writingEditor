@@ -39,7 +39,8 @@ with st.sidebar:
     editor_mode = st.radio(
         "Editor Mode",
         ["None", "Sentence Polisher", "Synonym Finder"],
-        index=0  # Default to "None"
+        index=0, # Default to "None"
+        key="editor_mode" # Used to reset the radio button to None after running the first prompt
     )
     
     # Convert radio selection to boolean flags
@@ -89,6 +90,10 @@ def ClaudeAI_call(usr_prompt):
                         output += chunk.delta.text
                         message_placeholder.write(output + " "
                         )
+
+        # Reset radio button to "None" once generation is complete
+        set.session_state['editor_mode'] = "None"
+
         # Calculate and display total tokens after receiving the complete response
         system_prompt = prompts['system_prompt']
         history_text = " ".join([m["content"] for m in st.session_state.messages])
