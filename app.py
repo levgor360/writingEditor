@@ -106,10 +106,7 @@ def editor_chain(usr_prompt):
     if enable_sentence_correction: # Apply the sentence polisher only if checkbox is selected
         sentence_mod_prompt = prompts['sentence_correction'].replace("{user_input}", usr_prompt)
         st.session_state.messages.append({"role": "user", "content": sentence_mod_prompt})
-    else:
-        st.session_state.messages.append({"role": "user", "content": str((usr_prompt))})
-    
-    if enable_synonym_identifier: # Apply the synonym identifier only if checkbox is selected
+    elif enable_synonym_identifier: # Apply the synonym identifier only if checkbox is selected
         sentence_mod2_prompt = prompts['synonym_id'].replace("{user_input}", usr_prompt)
         st.session_state.messages.append({"role": "user", "content": sentence_mod2_prompt})
     else:
