@@ -35,15 +35,17 @@ with st.sidebar:
     st.title('Parameters')
     # Request API key
     claude_api_key = st.text_input("API Key", key="chatbot_api_key", type="password")
-    # Sentence correction checkbox
-    enable_sentence_correction = st.sidebar.checkbox('Sentence Polisher', value=False)
-    enable_synonym_identifier = st.sidebar.checkbox('Synonym Finder', value=False)
-    if enable_sentence_correction:
-        enable_synonym_identifier = False
-
-    if enable_synonym_identifier:
-        enable_sentence_correction = False
-
+    # Sentence correction options
+    editor_mode = st.radio(
+        "Editor Mode",
+        ["None", "Sentence Polisher", "Synonym Finder"],
+        index=0  # Default to "None"
+    )
+    
+    # Convert radio selection to boolean flags
+    enable_sentence_correction = (editor_mode == "Sentence Polisher")
+    enable_synonym_identifier = (editor_mode == "Synonym Finder")
+    
 client = Anthropic(api_key=claude_api_key)
 
 chosen_temperature = st.sidebar.slider('temperature', min_value=0.0, max_value=1.0, value=0.7, step=0.01)
