@@ -1,7 +1,7 @@
 import streamlit as st
 import replicate
 import os
-from anthropic import Anthropic  # Replace OpenAI import
+from anthropic import Anthropic
 from openai import OpenAI
 import json
 import yaml
@@ -13,7 +13,7 @@ from openinference.instrumentation.openai import OpenAIInstrumentor
 phoenix_api_key = "4402d414c66202f090f:9b282ce"
 os.environ["PHOENIX_CLIENT_HEADERS"] = "api_key=4402d414c66202f090f:9b282ce"
 
-# configure the Phoenix tracer
+# Configure the Phoenix tracer
 tracer_provider = register(
   project_name="my-llm-app", # Default is 'default'
   endpoint="https://app.phoenix.arize.com/v1/traces",
@@ -29,20 +29,28 @@ with open(yaml_path, 'r') as file:
 ## Testing:
 # st.write(prompts['system_prompt'])
 
-# sidebar setup
+# Sidebar setup
 with st.sidebar:
     # Title displayed on the side bar
     st.title('Parameters')
     # Request API key
     claude_api_key = st.text_input("API Key", key="chatbot_api_key", type="password")
     # Sentence correction checkbox
-    enable_sentence_correction = st.sidebar.checkbox('Enable Sentence Polisher', value=False)
+    enable_sentence_correction = st.sidebar.checkbox('Sentence Polisher', value=False)
+    enable_synonym_identifier = st.sidebar.checkbox('Synonym Finder', value=False)
+
+
+if enable_sentence_correction:
+    enable_synonym_identifier = False
+
+if enable_synonym_identifier:
+    enable_sentence_correction = False
 
 client = Anthropic(api_key=claude_api_key)
 
 chosen_temperature = st.sidebar.slider('temperature', min_value=0.0, max_value=1.0, value=0.7, step=0.01)
 
-# main window title setup
+# Main window title setup
 st.subheader('Writing editor')
 
 if "messages" not in st.session_state.keys():
@@ -61,15 +69,7 @@ def clear_chat_history():
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Define the call
-def ClaudeAI_call(usr_prompt):
-    # Add debug logging
-    system_prompt = prompts['system_prompt']
-    st.sidebar.text(f"System prompt approximate tokens: {len(system_prompt.split())}")
-    
-    # Log current conversation history size
-    history_text = " ".join([m["content"] for m in st.session_state.messages])
-    st.sidebar.text(f"History approximate tokens: {len(history_text.split())}")
-    
+def ClaudeAI_call(usr_prompt):   
     st.chat_message("user").write(usr_prompt) # Display the user's message in the Streamlit chat interface.
     try:
         with st.chat_message("assistant"):
@@ -102,12 +102,18 @@ def ClaudeAI_call(usr_prompt):
     st.session_state.messages.append({"role": "assistant", "content": output})
 
 def editor_chain(usr_prompt):
-    if enable_sentence_correction == True: #apply the backend prompt to the users input, but only on their first input
+    if enable_sentence_correction: # Apply the sentence polisher only if checkbox is selected
         sentence_mod_prompt = prompts['sentence_correction'].replace("{user_input}", usr_prompt)
         st.session_state.messages.append({"role": "user", "content": sentence_mod_prompt})
     else:
-        st.session_state.messages.append({"role": "user", "content": str((usr_prompt))})    
+        st.session_state.messages.append({"role": "user", "content": str((usr_prompt))})
     
+    if enable_synonym_identifier: # Apply the synonym identifier only if checkbox is selected
+        sentence_mod2_prompt = prompts['synonym_id'].replace("{user_input}", usr_prompt)
+        st.session_state.messages.append({"role": "user", "content": sentence_mod2_prompt})
+    else:
+        st.session_state.messages.append({"role": "user", "content": str((usr_prompt))})
+
     ClaudeAI_call(usr_prompt)
 
 if prompt := st.chat_input():

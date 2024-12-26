@@ -5,7 +5,7 @@ sentence_correction : |
   The text below located under the heading 'Excerpt' is a written original piece of work. Please provide an example of how I can rewrite the excerpt to improve the writing quality and conceptual clarity.
 
   IMPORTANT: Provide ONLY the rewritten text. Do not include any explanations, comments, or analysis. Do not preface or follow the rewritten text with any additional text. Simply output the improved version of the text.
-  
+
   Make only minor modifications to the text to improve legibility, word choice, cadence and the overall reading experience while staying true to that version's particular editorial approach.
 
   You are welcome to insert original analogies or metaphors to the text you rewrite, but do so sparingly and only where you think its a very good idea. Do this ins rare cases, when the text is describing complex concepts. 
@@ -75,6 +75,20 @@ sentence_correction : |
   If order and action are the apostles of life's magnificence, then humans have been of great service to life's grand design. Through science and technology, we have learned to impose new patterns and exploit sources of energy which nature, if left to its own devices, would never have accessed on its own. Gifted by reason, we have become architects of improbability. But there is a deep irony to this triumph. Somewhere in our tour de force we went astray. We build ever more complex systems to cater to our whims, but at some point these systems began to sow the seeds of our own demise.
 
   Entropy festers in human affairs, in the form of declining social cohesion, environmental degradation and a troubled mind. Like particles in Boltzmann's box, we find ourselves drifting apart, our collective commitment to progress fragmenting into divergent pursuits. This drift toward disorder is not inevitable. It is a result of the choices we made. In the negative of entropy's defining features, we are able to find some guidance to redemption. But currently our map is two-dimensional, offering only two axes on which we have difficulty to plot both our location or destination. To make this guide useful, we need to look deeper into the methods by which organisms were able to cheat entropy for so long, as well as how they have faltered in their commitment to exist before.
+
+  # Excerpt:
+  {user_input}
+
+synonym_id : |
+  I am pasting an excerpt below under the heading “Excerpt”, which is a part of a piece I am writing.  There is a bracketed section in the text marked like this: [bracketed text example]. 
+
+  I'd like you to help me generate variations of the bracketed text. Follow these rules when offering the variations:
+
+  1. Do not rewrite the rest of the piece. Only rewrite the content that is intended to be inserted in place of the bracketed text.
+  2. Provide multiple variations of what can be inserted in place of the bracketed text.
+  3. The suggested alternative should be about the same length as the length of the bracketed text. 
+  4. If the bracketed text is a single word, then offer a one word alternative which would be more fitting in the context of the passage, improve the clarity of the concept being delivered in the sentence, and/or improve the stylistic elements of the sentence.
+  5. If the bracketed text is a sentence, then aim to offer an alternative that that maintain the same core meaning but expresses it more elegantly, conveying the same concept while improving clarity, logical continuity and the overall reading experience. The alternative content you suggest can be slightly longer than the original bracketed sentence, but should not extend beyond one additional sentence.
 
   # Excerpt:
   {user_input}
