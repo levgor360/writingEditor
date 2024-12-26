@@ -61,6 +61,18 @@ st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Define the call
 def ClaudeAI_call(usr_prompt):  
+
+    from anthropic import Anthropic
+
+def ClaudeAI_call(usr_prompt):
+    # Add debug logging
+    system_prompt = prompts['system_prompt']
+    st.sidebar.text(f"System prompt approximate tokens: {len(system_prompt.split())}")
+    
+    # Log current conversation history size
+    history_text = " ".join([m["content"] for m in st.session_state.messages])
+    st.sidebar.text(f"History approximate tokens: {len(history_text.split())}")
+    
     st.chat_message("user").write(usr_prompt) # Display the user's message in the Streamlit chat interface.
     try:
         with st.chat_message("assistant"):
