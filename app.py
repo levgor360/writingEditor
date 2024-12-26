@@ -88,6 +88,12 @@ def ClaudeAI_call(usr_prompt):
                         output += chunk.delta.text
                         message_placeholder.write(output + " "
                         )
+        # Calculate and display total tokens after receiving the complete response
+        system_prompt = prompts['system_prompt']
+        history_text = " ".join([m["content"] for m in st.session_state.messages])
+        response_tokens = len(output.split())
+        total_tokens = len(system_prompt.split()) + len(history_text.split()) + response_tokens
+        st.sidebar.text(f"Total tokens: {total_tokens}")
     except Exception as e:
         st.error(f"API Error: {str(e)}")
       
