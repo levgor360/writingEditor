@@ -91,7 +91,8 @@ def editor_chain(usr_prompt):
         st.session_state.messages.append({"role": "user", "content": sentence_mod_prompt})
     else:
         st.session_state.messages.append({"role": "user", "content": str((usr_prompt))})    
-        ClaudeAI_call
+    
+    ClaudeAI_call
 
 if prompt := st.chat_input():
     if not claude_api_key:
