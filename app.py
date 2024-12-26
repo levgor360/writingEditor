@@ -20,6 +20,14 @@ tracer_provider = register(
 
 OpenAIInstrumentor().instrument(tracer_provider=tracer_provider)
 
+# Load YAML file
+yaml_path = os.path.join(os.path.dirname(__file__), "prompts.yaml")
+with open(yaml_path, 'r') as file:
+    prompts = yaml.safe_load(file)
+
+## Testing:
+st.chat_message("user").write(prompts['system_prompt'])
+
 # sidebar setup
 with st.sidebar:
     # Title displayed on the side bar
@@ -36,7 +44,10 @@ chosen_max_tokens = st.sidebar.slider('max_tokens', min_value=32, max_value=4096
 st.subheader('Writing editor')
 
 if "messages" not in st.session_state.keys():
-    st.session_state["messages"] = [{"role": "assistant", "content": "Decribe the task or problem you would like me to tackle."}]
+    st.session_state["messages"] = [
+        {"role": "system", "content": "dafdsafa"},
+        {"role": "assistant", "content": "Decribe the task or problem you would like me to tackle."}
+        ]
 
 # Show the items only after the system prompt on the front end
 for message in st.session_state.messages[2:]:
