@@ -35,11 +35,12 @@ with st.sidebar:
     st.title('Parameters')
     # Request API key
     claude_api_key = st.text_input("API Key", key="chatbot_api_key", type="password")
+    # Sentence correction checkbox
+    enable_sentence_correction = st.sidebar.checkbox('Enable Sentence Polisher', value=False)
 
 client = Anthropic(api_key=claude_api_key)
 
 chosen_temperature = st.sidebar.slider('temperature', min_value=0.0, max_value=1.0, value=0.7, step=0.01)
-chosen_max_tokens = st.sidebar.slider('max_tokens', min_value=32, max_value=4096, value=4096, step=100)
 
 # main window title setup
 st.subheader('Writing editor')
@@ -81,7 +82,7 @@ def ClaudeAI_call(usr_prompt):
                 messages=st.session_state.messages,
                 system=prompts['system_prompt'],
                 temperature=chosen_temperature,
-                max_tokens=chosen_max_tokens,
+                max_tokens=4096,
             ) as stream:
                 for chunk in stream:
                     if chunk.type == "content_block_delta":
@@ -101,7 +102,7 @@ def ClaudeAI_call(usr_prompt):
     st.session_state.messages.append({"role": "assistant", "content": output})
 
 def editor_chain(usr_prompt):
-    if len(st.session_state.messages) == 1: #apply the backend prompt to the users input, but only on their first input
+    if len(st.session_state.messages) == 1 and enable_sentence_correction == True: #apply the backend prompt to the users input, but only on their first input
         sentence_mod_prompt = prompts['sentence_correction'].replace("{user_input}", usr_prompt)
         st.session_state.messages.append({"role": "user", "content": sentence_mod_prompt})
     else:
