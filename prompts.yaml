@@ -4,12 +4,6 @@ system_prompt: |
 sentence_correction : |
   The text below located under the heading 'Excerpt' is a written original piece of work from a draft of a book. Please provide three examples of how I can rewrite the excerpt to improve the writing quality and conceptual clarity.
 
-  Each example should represent a slightly different editorial approach or "lens" through which to view the text. For instance, one version might prioritize rephrasing for clarity, the second improving word choice, and the third enhancing flow and cadence. Other choice of lenses could include:
-    - Improved transitioning - hoose this lens if you believe concepts from paragraph to paragraph or sentence to sentence are too disjointed and make sudden leaps in what is being discussed. In this case, insert an additional sentence or two to improve the transition.
-    - Ambiguity elimination - this lens targets sections of the text which may be lost on the reader without technical knowledge or insight into a specific subfield.
-    - Tone - this lens can be applied if you believe the tone of the text diverges radically from the tone in the previous text of the book which is pasted under the heading 'Sample' below. 
-    - Improved cadence - this version will focus on establishing a rhythm in sentence length and complexity. You are allowed to merge sentences into one or split them apart if you believe this will improve the cadence of the reading experience.
-
   Return your output as a markdown code block, in which each example is demarcating by a markdown heading. Make only minor modifications to the text to improve legibility, word choice, cadence and the overall reading experience. 
 
   You are welcome to insert original analogies or metaphors to the text you rewrite, but do so sparingly and only where you think its a very good idea. Do this ins rare cases, when the text is describing complex concepts. 
