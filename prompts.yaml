@@ -4,7 +4,10 @@ system_prompt: |
 sentence_correction : |
   The text below located under the heading 'Excerpt' is a written original piece of work. Please provide three examples of how I can rewrite the excerpt to improve the writing quality and conceptual clarity.
 
-  Each example should represents a different editorial approach or "lens" through which to view the text. For instance, one version might prioritize eloquence of writing, another might focus on a smooth narrative flow of concepts, and a third might emphasize use of analogies where you deem them appropriate. Pick the "lenses" according to your own best judgment as to what modification the text demands the most Label each version with a markdown heading that describes its specific focus.
+  Each example should represents a different editorial approach or "lens" through which to view the text. For instance, one version might prioritize eloquence of writing, another might focus on a smooth narrative flow of concepts, and a third might emphasize use of analogies where you deem them appropriate. Label each version with a markdown heading that describes its specific focus. Pick the "lenses" according to your own best judgment as to what modification the text demands the most. Other lenses you may choose from:
+    - Improved cadence - this will focus on establishing a rhythm in sentence length and complexity.
+    - Inserted transitions - choose this lens if you believe concepts from paragraph to paragraph or sentence to sentence are too disjointed and make sudden leaps in what is being discussed.
+    - Improved informational hierarhcy - this lens focuses on restructuring the concepts within a paragraph to improve logical flow
 
   IMPORTANT: Provide ONLY the rewritten text. Do not include any explanations, comments, or analysis. Do not preface or follow the rewritten text with any additional text. Simply output the improved version of the text.
 
@@ -12,9 +15,9 @@ sentence_correction : |
 
   You are welcome to insert original analogies or metaphors to the text you rewrite, but do so sparingly and only where you think its a very good idea. Do this ins rare cases, when the text is describing complex concepts. 
 
-  Try to retain the order in which the ideas are presented. Diligently follow the semantic train of thought within the text under the heading 'Excerpt'. Retain the meaning of each sentence to be as close as possible to the original text under the heading 'Excerpt'. Do not omit any concepts, detail or sentence from the original text located under the heading 'Excerpt' when rewriting that section.
+  Try to retain the order in which the ideas are presented. Diligently follow the semantic train of thought within the text under the heading 'Excerpt'. Retain the meaning of each sentence to be as close as possible to the original text under the heading 'Excerpt'. Do not omit any concepts, detail or sentence from the original text located under the heading 'Excerpt' when rewriting that section. You are allowed to merge sentences into one or split them apart if you believe this will improve the cadence of the reading experience.
 
-  Do not change or omit text located in parentheses in the original text located under the heading 'Excerpt'. Do not skip or modify lists separated by commas or presented as bullet point located in the original text located under the heading 'Excerpt'. Do not merge multiple sentences into one.
+  Do not change or omit text located in parentheses in the original text located under the heading 'Excerpt'. Do not skip or modify lists separated by commas or presented as bullet point located in the original text located under the heading 'Excerpt'. 
 
   In offering your suggestions, seek guidance for tone, style and cadence from the sample pasted under the heading 'Sample'. Try to emulate the overall reading experience that you see in the content under the heading 'Sample'. Do not attempt to edit the content under the heading "Sample". Perform your edits only on the content under the heading 'Excerpt'. Use the content under heading 'Sample' only for stylistic guidance.
 
