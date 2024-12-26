@@ -60,10 +60,6 @@ def clear_chat_history():
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Define the call
-def ClaudeAI_call(usr_prompt):  
-
-    from anthropic import Anthropic
-
 def ClaudeAI_call(usr_prompt):
     # Add debug logging
     system_prompt = prompts['system_prompt']

@@ -75,4 +75,4 @@ sentence_correction : |
   Entropy festers in human affairs, in the form of declining social cohesion, environmental degradation and a troubled mind. Like particles in Boltzmann's box, we find ourselves drifting apart, our collective commitment to progress fragmenting into divergent pursuits. This drift toward disorder is not inevitable. It is a result of the choices we made. In the negative of entropy's defining features, we are able to find some guidance to redemption. But currently our map is two-dimensional, offering only two axes on which we have difficulty to plot both our location or destination. To make this guide useful, we need to look deeper into the methods by which organisms were able to cheat entropy for so long, as well as how they have faltered in their commitment to exist before.
 
   # Excerpt:
-  {user_prompt}
+  {user_input}
