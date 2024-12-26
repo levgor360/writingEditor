@@ -38,13 +38,11 @@ with st.sidebar:
     # Sentence correction checkbox
     enable_sentence_correction = st.sidebar.checkbox('Sentence Polisher', value=False)
     enable_synonym_identifier = st.sidebar.checkbox('Synonym Finder', value=False)
+    if enable_sentence_correction:
+        enable_synonym_identifier = False
 
-
-if enable_sentence_correction:
-    enable_synonym_identifier = False
-
-if enable_synonym_identifier:
-    enable_sentence_correction = False
+    if enable_synonym_identifier:
+        enable_sentence_correction = False
 
 client = Anthropic(api_key=claude_api_key)
 
