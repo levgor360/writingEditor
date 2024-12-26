@@ -92,7 +92,7 @@ def ClaudeAI_call(usr_prompt):
                         )
 
         # Reset radio button to "None" once generation is complete
-        set.session_state['editor_mode'] = "None"
+        st.session_state['editor_mode'] = "None"
 
         # Calculate and display total tokens after receiving the complete response
         system_prompt = prompts['system_prompt']
