@@ -45,7 +45,7 @@ with st.sidebar:
     # Convert radio selection to boolean flags
     enable_sentence_correction = (editor_mode == "Sentence Polisher")
     enable_synonym_identifier = (editor_mode == "Synonym Finder")
-    
+
 client = Anthropic(api_key=claude_api_key)
 
 chosen_temperature = st.sidebar.slider('temperature', min_value=0.0, max_value=1.0, value=0.7, step=0.01)
@@ -70,7 +70,7 @@ st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 # Define the call
 def ClaudeAI_call(usr_prompt):   
-    st.chat_message("user").write(usr_prompt) # Display the user's message in the Streamlit chat interface.
+    st.chat_message("user").code(usr_prompt) # Display the user's message in the Streamlit chat interface.
     try:
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
@@ -98,7 +98,7 @@ def ClaudeAI_call(usr_prompt):
     except Exception as e:
         st.error(f"API Error: {str(e)}")
       
-    message_placeholder.write(output)
+    message_placeholder.code(output)
     st.session_state.messages.append({"role": "assistant", "content": output})
 
 def editor_chain(usr_prompt):
