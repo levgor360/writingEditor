@@ -39,7 +39,7 @@ with st.sidebar:
 client = Anthropic(api_key=claude_api_key)
 
 chosen_temperature = st.sidebar.slider('temperature', min_value=0.0, max_value=1.0, value=0.7, step=0.01)
-chosen_max_tokens = st.sidebar.slider('max_tokens', min_value=32, max_value=10000, value=10000, step=8)
+chosen_max_tokens = st.sidebar.slider('max_tokens', min_value=32, max_value=150000, value=32000, step=1000)
 
 # main window title setup
 st.subheader('Writing editor')
@@ -62,27 +62,31 @@ st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 # Define the call
 def ClaudeAI_call(usr_prompt):  
     st.chat_message("user").write(usr_prompt) # Display the user's message in the Streamlit chat interface.
+    try:
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            output = ""
 
-    with st.chat_message("assistant"):
-      message_placeholder = st.empty()
-      output = ""
-
-      # Implement streaming functionality
-      with client.messages.stream(
-          model="claude-3-sonnet-20240229",
-          messages=st.session_state.messages,
-          system=prompts['system_prompt'],
-          temperature=chosen_temperature,
-          max_tokens=chosen_max_tokens,
-      ) as stream:
-          for chunk in stream:
-              if chunk.type == "content_block_delta":
-                  output += chunk.delta.text
-                  message_placeholder.write(output + " "
-                  )
+            # Implement streaming functionality
+            with client.messages.stream(
+                model="claude-3-sonnet-20240229",
+                messages=st.session_state.messages,
+                system=prompts['system_prompt'],
+                temperature=chosen_temperature,
+                max_tokens=chosen_max_tokens,
+                model_params={
+                    "context_window": 200000
+                }
+            ) as stream:
+                for chunk in stream:
+                    if chunk.type == "content_block_delta":
+                        output += chunk.delta.text
+                        message_placeholder.write(output + " "
+                        )
+    except Exception as e:
+        st.error(f"API Error: {str(e)}")
       
-      message_placeholder.write(output)
-
+    message_placeholder.write(output)
     st.session_state.messages.append({"role": "assistant", "content": output})
 
 def editor_chain(usr_prompt):
