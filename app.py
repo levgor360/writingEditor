@@ -74,9 +74,6 @@ def ClaudeAI_call(usr_prompt):
                 system=prompts['system_prompt'],
                 temperature=chosen_temperature,
                 max_tokens=chosen_max_tokens,
-                model_params={
-                    "context_window": 200000
-                }
             ) as stream:
                 for chunk in stream:
                     if chunk.type == "content_block_delta":
