@@ -116,7 +116,6 @@ def editor_chain(usr_prompt):
         st.session_state.messages.append({"role": "user", "content": str((usr_prompt))})
 
     ClaudeAI_call(usr_prompt)
-    st.session_state.editor_mode = "None"
 
 if prompt := st.chat_input():
     if not claude_api_key:
