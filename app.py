@@ -78,7 +78,7 @@ def ClaudeAI_call(usr_prompt):
 
             # Update model to claude-3-7-sonnet
             with client.messages.stream(
-                model="claude-3-7-sonnet-20240620",  # Changed from claude-3-sonnet-20240229
+                model="claude-3-7-sonnet-20250219",  # Changed from claude-3-sonnet-20240229
                 messages=st.session_state.messages,
                 system=prompts['system_prompt'],
                 temperature=chosen_temperature,
