@@ -20,6 +20,7 @@ sentence_correction : |
     - Do not change or omit text in parentheses or lists.
     - Aim to emulate the tone and style of high-quality academic writing that is accessible to a general audience.
     - Focus primarily on improving rhythm and sentence flow.
+  5. In the versions you provide, avoid intensifiers, degree modifiers and boosters like "profound", "astonishing", "amazing" and "intense"
 
   Before providing your revised versions, wrap your analysis and improvement strategy in <text_improvement_strategy> tags. In this section:
   - List key concepts, themes, and challenging words or phrases from the excerpt.
