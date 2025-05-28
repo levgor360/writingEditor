@@ -5,21 +5,21 @@ from anthropic import Anthropic
 from openai import OpenAI
 import json
 import yaml
-from phoenix.otel import register
+## from phoenix.otel import register
 import requests
-from openinference.instrumentation.openai import OpenAIInstrumentor
+## from openinference.instrumentation.openai import OpenAIInstrumentor
 
-# Phoenix API key
-phoenix_api_key = "4402d414c66202f090f:9b282ce"
-os.environ["PHOENIX_CLIENT_HEADERS"] = "api_key=4402d414c66202f090f:9b282ce"
+# # Phoenix API key
+# phoenix_api_key = "4402d414c66202f090f:9b282ce"
+# os.environ["PHOENIX_CLIENT_HEADERS"] = "api_key=4402d414c66202f090f:9b282ce"
 
-# Configure the Phoenix tracer
-tracer_provider = register(
-  project_name="my-llm-app", # Default is 'default'
-  endpoint="https://app.phoenix.arize.com/v1/traces",
-)
-
-OpenAIInstrumentor().instrument(tracer_provider=tracer_provider)
+# if "phoenix_tracer_registered" not in st.session_state:
+#     tracer_provider = register(
+#         project_name="my-llm-app",
+#         endpoint="https://app.phoenix.arize.com/v1/traces",
+#     )
+#     OpenAIInstrumentor().instrument(tracer_provider=tracer_provider)
+#     st.session_state["phoenix_tracer_registered"] = True
 
 # Load YAML file
 yaml_path = os.path.join(os.path.dirname(__file__), "prompts.yaml")
